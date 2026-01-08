@@ -55,4 +55,4 @@ def get_streams(youtube_video_id: str):
         return {"streams": streams, "result":True}
     except Exception as e:
         # raise HTTPException(status_code=400, detail=f"Error: {str(e)}")
-        return {"streams": streams, "result":True, "message":str(e)}
+        return {"streams": [], "result":False, "message":str(e)}
