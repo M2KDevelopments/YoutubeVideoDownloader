@@ -36,7 +36,7 @@ def download_video():
 @app.get("/streams/{youtube_video_id}")
 def get_streams(youtube_video_id: str):
     try:
-        yt = YouTube(f"http://youtube.com?watch?v={youtube_video_id}", on_progress_callback=on_progress, on_complete_callback=on_complete)
+        yt = YouTube(f"http://youtube.com?watch?v={youtube_video_id}", 'WEB')
         yt.register_on_progress_callback(on_progress)
         yt.register_on_complete_callback(on_complete)
         available_streams = yt.streams.filter(progressive=True)
