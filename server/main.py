@@ -21,7 +21,7 @@ def download_video():
 # @app.get("/download/{youtube_video_id}")
 # def download_video(youtube_video_id: str):
 #     try:
-#         yt = YouTube(f"http://youtube.com?watch?v={youtube_video_id}", on_progress_callback=on_progress, on_complete_callback=on_complete)
+#         yt = YouTube(f"http://youtube.com?watch?v={youtube_video_id}", 'WEB')
 #         stream = yt.streams.get_highest_resolution()
 #         out_file = stream.download(output_path="media", filename=f"{youtube_video_id}.mp4") 
 #         return FileResponse(
