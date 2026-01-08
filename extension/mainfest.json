@@ -1,0 +1,54 @@
+{
+  "name": "Youtube Video Downloader",
+  "short_name": "Youtube Video Downloader made simple",
+  "version": "1.0.0.0",
+  "description": "Youtube Video Downloader made simple. Download Youtube videos in MP4 format with just a click.",
+  "manifest_version": 3,
+  "minimum_chrome_version": "88",
+  "homepage_url": "https://youtubedownloader.m2kdevelopments.com",
+  "action": {
+    "default_title": "Youtube Video Downloader",
+    "default_icon": {
+      "16": "logo.png",
+      "32": "logo.png",
+      "48": "logo.png"
+    }
+  },
+  "permissions": [],
+  "icons": {
+    "16": "logo.png",
+    "32": "logo.png",
+    "48": "logo.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/watch*"
+      ],
+      "js": [
+        "./content.js"
+      ],
+      "css": [
+        "./styles.css"
+      ],
+      "run_at": "document_end",
+      "all_frames": true
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "/icons/*"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}
