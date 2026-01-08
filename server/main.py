@@ -12,6 +12,12 @@ def on_complete(stream, file_path):
     print(f"\n√ Done downloading: {file_path}")
         
 app = FastAPI()
+
+
+@app.get("/")
+def download_video():
+    return "Health Check"
+
 # @app.get("/download/{youtube_video_id}")
 # def download_video(youtube_video_id: str):
 #     try:
