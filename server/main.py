@@ -2,6 +2,7 @@ import os
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
 from pytubefix import YouTube
+from fastapi.middleware.cors import CORSMiddleware
 
 def on_progress(stream, chunk, bytes_remaining):
         total = stream.filesize
@@ -12,7 +13,12 @@ def on_complete(stream, file_path):
     print(f"\n√ Done downloading: {file_path}")
         
 app = FastAPI()
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], # Adjust this for production!
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 def download_video():
@@ -39,7 +45,7 @@ def get_streams(youtube_video_id: str):
         yt = YouTube(f"http://youtube.com?watch?v={youtube_video_id}", 'WEB')
         yt.register_on_progress_callback(on_progress)
         yt.register_on_complete_callback(on_complete)
-        available_streams = yt.streams.filter(progressive=True)
+        available_streams = yt.streams.filter(progressive=True).order_by('resolution').desc()
         streams = []
         for s in available_streams:
             streams.append({
