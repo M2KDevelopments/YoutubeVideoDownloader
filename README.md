@@ -18,7 +18,7 @@ This is a chrome browser extension. It functions as a Youtube Video Downloader. 
 <img src="./extension/instructions/pin.png"/>
 
 
-## Make sure you have python 3 install your computer
+## Make sure you have python 3 installed on your computer
 ```bash
 https://www.python.org/downloads/
 ```
