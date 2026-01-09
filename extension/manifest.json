@@ -14,7 +14,7 @@
       "48": "logo.png"
     }
   },
-  "permissions": [],
+  "permissions": ["activeTab"],
   "icons": {
     "16": "logo.png",
     "32": "logo.png",
